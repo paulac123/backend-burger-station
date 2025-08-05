@@ -1,0 +1,23 @@
+version: "3.3"
+
+services:
+  mysql:
+    image: mysql:5
+    container_name: mysql_burger
+    environment:
+      - MYSQL_DATABASE=burger_db
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3307:3306
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      - PMA_HOST=mysql
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 8080:80
