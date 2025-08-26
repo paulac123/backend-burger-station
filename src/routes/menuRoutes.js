@@ -8,7 +8,7 @@ const {
 
 router.get("/menu", getAllMenu);
 
-router.get("/menu/:id", getByCategory);
+router.get("/menu/:id", getByCategory);//aca corregir xq no esta bien el id debe ser category
 
 //router.post("/orderDetail", addProductToOrder);
 

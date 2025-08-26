@@ -9,7 +9,9 @@ const loginUser = async ({ email, password }) => {
   ]);
 
   if (data.length === 0) {
-    throw new Error("Usuario no encontrado");
+    const error = new Error("Usuario no encontrado");
+    error.status = 404;
+    throw error;
   }
 
   const foundUser = data[0];
@@ -18,7 +20,9 @@ const loginUser = async ({ email, password }) => {
   const match = await bcrypt.compare(password, foundUser.password);
 
   if (!match) {
-    throw new Error("Contraseña incorrecta");
+    const error = new Error("Contraseña incorrecta");
+    error.status = 401;
+    throw error;
   }
 
   // 3. Crea y retorna el token
@@ -28,7 +32,10 @@ const loginUser = async ({ email, password }) => {
     { expiresIn: "1h" }
   );
 
-  return { token, user: { id: foundUser.id, email: foundUser.email } };
+  return {
+    token,
+    user: { id: foundUser.id, email: foundUser.email, name: foundUser.name },
+  };
 };
 
 module.exports = loginUser;

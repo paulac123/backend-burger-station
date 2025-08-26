@@ -11,12 +11,12 @@ const getAllMenu = async (req, res, next) => {
 
 const getByCategory = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { category } = req.params;
 
-    if (!id) {
-      return res.status(400).json({ error: "falta Id de la category " });
+    if (!category) {
+      return res.status(400).json({ error: "falta la category " });
     }
-    const products = await getProductByCategory(id);
+    const products = await getProductByCategory(category);
     res.json(products);
   } catch (error) {
     next(error);

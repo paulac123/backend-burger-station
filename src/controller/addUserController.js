@@ -8,6 +8,7 @@ const addNewUser = async (req, res, next) => {
     const body = req.body;
 
     const newUser = await service.addUser(body);
+    console.log(" Nuevo usuario registrado:", newUser.email);
 
     // 4. Generar token JWT
     const token = jwt.sign(
@@ -21,7 +22,8 @@ const addNewUser = async (req, res, next) => {
       token,
     });
   } catch (error) {
-    next(error);
+    // aquí NO inventamos el mensaje, simplemente usamos el que lanzó el service
+    res.status(400).json({ message: error.message });
   }
 };
 
