@@ -3,10 +3,10 @@ const bcrypt = require("bcrypt");
 
 class UserService {
   async findByEmail(email) {
-    const [rows] = await pool.query("SELECT * FROM users WHERE email = ?", [
+    const result = await pool.query("SELECT * FROM users WHERE email = $1", [
       email,
     ]);
-    return rows[0]; // null si no existe
+    return result.rows[0] || null; // null si no existe
   }
 
   async addUser(data) {
@@ -23,11 +23,11 @@ class UserService {
     const hashedPassword = await bcrypt.hash(String(password), saltRounds);
 
     // Insertar nuevo usuario
-    const query = `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`;
-    const [results] = await pool.query(query, [name, email, hashedPassword]);
+    const query = `INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id`;
+    const result = await pool.query(query, [name, email, hashedPassword]);
 
     return {
-      id: results.insertId,
+      id: result.rows[0].id,
       name,
       email,
     };
