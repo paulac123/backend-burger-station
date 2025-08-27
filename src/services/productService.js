@@ -1,20 +1,21 @@
 const pool = require("../db/pool");
 
 const getMenu = async () => {
-  const [rows] = await pool.query("SELECT * FROM products");
-  return rows;
+  const result = await pool.query("SELECT * FROM products");
+  return result.rows;
 };
 
 const getProductByCategory = async (category) => {
-  const [rows] = await pool.query(
-    "SELECT * FROM products WHERE  category = ?",
+  const result = await pool.query(
+    "SELECT * FROM products WHERE category = $1",
     [category]
   );
-  return rows;
+  return result.rows;
 };
+
 const getProductById = async (id) => {
-  const [rows] = await pool.query("SELECT * FROM products WHERE id = ?", [id]);
-  return rows[0];
+  const result = await pool.query("SELECT * FROM products WHERE id = $1", [id]);
+  return result.rows[0];
 };
 
 module.exports = { getMenu, getProductByCategory, getProductById };
