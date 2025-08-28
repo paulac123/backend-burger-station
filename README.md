@@ -10,8 +10,8 @@ middleware, manejo de CORS y pruebas de testing.
 - Gestión de productos (CRUD) - Gestión de usuarios (solo desde frontend, rutas disponibles para
 autenticación y registro) - Integración con base de datos real - Organización del código en servicios y
 middleware - Pruebas de funcionamiento
-■ Instalación y uso:
 
+■ Instalación y uso:
 1. Clona el repositorio 2. Instala dependencias con `npm install` 3. Configura las variables de entorno
 para la base de datos 4. Inicia el servidor con `npm run dev`
 
