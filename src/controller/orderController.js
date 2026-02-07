@@ -1,7 +1,7 @@
 const OrderService = require("../services/orderService");
 const OrderDetailServices = require("../services/orderDetailServices");
 const productService = require("../services/productService");
-const sendMail = require("../services/sendGridService");
+const sendMail = require("../services/emailService");
 
 const service = new OrderService();
 const detailService = new OrderDetailServices();
@@ -10,7 +10,7 @@ const detailService = new OrderDetailServices();
 const calcularTotal = (orderDetails) => {
   return orderDetails.reduce(
     (acc, item) => acc + item.price * item.quantity,
-    0
+    0,
   );
 };
 
@@ -24,7 +24,7 @@ const createOrder = async (req, res, next) => {
 
     const productPromises = products.map(async (product) => {
       const realProduct = await productService.getProductById(
-        product.product_id
+        product.product_id,
       );
       return await detailService.addProduct({
         order_id,
