@@ -9,7 +9,7 @@ const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
   process.env.GMAIL_CLIENT_ID,
   process.env.GMAIL_CLIENT_SECRET,
-  "https://developers.google.com/oauthplayground"
+  "https://developers.google.com/oauthplayground",
 );
 
 oauth2Client.setCredentials({
@@ -46,5 +46,4 @@ async function sendMail({ to, subject, text, html }) {
     throw error;
   }
 }
-
-export default sendMail;
+module.exports = sendMail;
