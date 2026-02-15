@@ -39,12 +39,12 @@ const createOrder = async (req, res, next) => {
     const total = calcularTotal(orderDetails);
     await service.updateOrderTotal(order_id, total);
 
-    await sendMail({
-      to: req.user.email,
-      subject: "gracias por tu compra",
-      text: "Recibimos tu orden",
-      html: "<h1> Gracias por tu compra ya lo estamos preparando <h1>",
-    });
+    //await sendMail({
+    //to: req.user.email,
+    //subject: "gracias por tu compra",
+    //text: "Recibimos tu orden",
+    //html: "<h1> Gracias por tu compra ya lo estamos preparando <h1>",
+    //});
 
     res.status(201).json({
       order: newOrder,
