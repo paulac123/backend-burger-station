@@ -13,6 +13,13 @@ async function migrate() {
         await client.connect();
         console.log("✅ Conectado a Render.");
 
+        // Verificación de seguridad: No sobreescribir si ya existe la tabla "users"
+        const check = await client.query("SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'users');");
+        if (check.rows[0].exists) {
+            console.log("🟢 La base de datos ya está creada y tiene datos. Saltando la migración inicial para no borrar registros nuevos.");
+            return;
+        }
+
         // 1. Crear tablas
         console.log("🔨 Creando tablas...");
         const ddl = `
@@ -59,8 +66,6 @@ async function migrate() {
         console.log("📥 Extrayendo registros del respaldo .sql...");
         
         let dump;
-        // Tratamos de leer el archivo como utf-8 primero, y si no encontramos inserts, probamos utf-16le 
-        //(powershell lo guarda en utf16 a veces, o mysqldump original usa utf8)
         try { dump = fs.readFileSync('backup_burger.sql', 'utf8'); } catch(e){}
         let insertStatements = [];
         let isUtf8 = dump && dump.includes('INSERT INTO');
@@ -74,13 +79,11 @@ async function migrate() {
             line = line.trim();
             if (line.startsWith('INSERT INTO')) {
                 line = line.replace(/`/g, '"');
-                // Evitamos fechas cero q rompen postgres
                 line = line.replace(/'0000-00-00 00:00:00'/g, 'NULL');
                 insertStatements.push(line);
             }
         }
 
-        // Ejecutar las sentencias respetando el orden de llaves foráneas:
         const orderedTables = ['"users"', '"products"', '"orders"', '"order_details"'];
         let count = 0;
         
@@ -94,7 +97,7 @@ async function migrate() {
            }
         }
 
-        console.log("🔄 Actualizando secuencias de IDs (Para que Autoincrementable no de fallos en el futuro)...");
+        console.log("🔄 Actualizando secuencias de IDs...");
         await client.query(`
             SELECT setval('users_id_seq', COALESCE((SELECT MAX(id) FROM "users"), 1));
             SELECT setval('products_id_seq', COALESCE((SELECT MAX(id) FROM "products"), 1));

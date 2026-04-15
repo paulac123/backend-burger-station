@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node rellenar_render.js && node index.js"
   },
   "keywords": [],
   "author": "",
