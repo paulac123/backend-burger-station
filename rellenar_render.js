@@ -65,12 +65,12 @@ async function migrate() {
         console.log("📥 Extrayendo registros del respaldo .sql...");
         
         let dump;
-        try { dump = fs.readFileSync('backup_burger.sql', 'utf8'); } catch(e){}
+        try { dump = fs.readFileSync('backup_burger_utf8.sql', 'utf8'); } catch(e){}
         let insertStatements = [];
         let isUtf8 = dump && dump.includes('INSERT INTO');
-        
+
         if (!isUtf8) {
-             dump = fs.readFileSync('backup_burger.sql', 'utf16le');
+             dump = fs.readFileSync('backup_burger_utf8.sql', 'utf8');
         }
 
         const lines = dump.split('\n');

@@ -98,7 +98,30 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (11,'La Monta├▒esa','Carne de res artesanal, queso suizo, champi├▒ones salteados, cebolla caramelizada y salsa de hierbas.',9.50,'/images/burger_montanesa.png','burger'),(12,'El Ranchero','Pollo a la parrilla marinado, tocino crujiente, queso provolone, aros de cebolla fritos y salsa ranch.',10.00,'/images/burger_ranchero.png','burger'),(13,'Veggie Mediterr├ínea','Medall├│n de garbanzos y espinacas, queso feta, aceitunas negras, pimientos asados y tzatziki.',8.75,'/images/burger_veggie.png','burger'),(14,'Doble B├║falo','Doble carne de res, queso cheddar a├▒ejo, pepinillos encurtidos, cebolla roja y salsa b├║falo picante.',11.75,'/images/burger_bufalo.png','burger'),(15,'Mar y Tierra','Carne de res, camarones salteados al ajillo, aguacate y salsa rosada de la casa.',13.00,'/images/burger_marytierra.png','burger'),(16,'Huevo frito','Adici├│n de huevo frito',1.00,'/images/huevo.png','adicion'),(17,'Jalape├▒os','Adici├│n de jalape├▒os',0.50,'/images/jalape├▒o.png','adicion'),(18,'Guacamole','Adici├│n de guacamole',1.50,'/images/guacamole.png','adicion'),(19,'Pi├▒a caramelizada','Adici├│n de pi├▒a caramelizada',0.75,'/images/pi├▒a.png','adicion'),(20,'Extra queso','Adici├│n de queso cheddar o mozzarella',0.80,'/images/queso.png','adicion'),(21,'K├®tchup','Salsa de tomate cl├ísica',0.00,'/images/tomate.png','salsa'),(22,'Mayonesa','Mayonesa tradicional',0.00,'/images/mayonesa.png','salsa'),(23,'Mostaza Dij├│n','Mostaza estilo Dij├│n',0.00,'/images/mostaza.png','salsa'),(24,'Salsa BBQ ahumada','Salsa barbacoa con toque ahumado',0.60,'/images/bbq.png','salsa'),(25,'Mayonesa picante','Mayonesa con un toque picante',0.60,'/images/mayonesapicante.png','salsa'),(26,'Papas Fritas Corte Casero','Papas fritas de corte grueso estilo casero',2.75,'/images/papafritas.png','papas'),(27,'Papas en Cascos con Piel','Papas en cascos con piel, crujientes por fuera y suaves por dentro',3.25,'/images/paparodajas.png','papas'),(28,'Batatas Fritas','Batatas dulces fritas con un toque de sal',3.50,'/images/papascasco.png','papas'),(29,'Limonada Natural','Limonada fresca hecha con jugo natural de lim├│n',2.25,'/images/limonada.png','bebida'),(30,'Gaseosa','Bebidas carbonatadas: Cola, Naranja o Lima-Lim├│n',2.00,'/images/gaseosa.png','bebida'),(31,'T├® Helado','T├® fr├¡o sabor durazno o lim├│n',2.00,'/images/te.png','bebida'),(32,'Agua Embotellada','Agua purificada en botella',1.50,'/images/agua.png','bebida'),(33,'Cerveza Artesanal (sin alcohol)','Cerveza artesanal sin contenido alcoh├│lico',4.00,'/images/cerveza.png','bebida');
+INSERT INTO `products` VALUES
+(11,'La Montañesa','Carne de res artesanal, queso suizo, champiñones salteados, cebolla caramelizada y salsa de hierbas.',9.50,'/images/burger_montanesa.webp','burger'),
+(12,'El Ranchero','Pollo a la parrilla marinado, tocino crujiente, queso provolone, aros de cebolla fritos y salsa ranch.',10.00,'/images/burger_ranchero.webp','burger'),
+(13,'Veggie Mediterránea','Medallón de garbanzos y espinacas, queso feta, aceitunas negras, pimientos asados y tzatziki.',8.75,'/images/burger_veggie.webp','burger'),
+(14,'Doble Búfalo','Doble carne de res, queso cheddar añejo, pepinillos encurtidos, cebolla roja y salsa búfalo picante.',11.75,'/images/burger_bufalo.webp','burger'),
+(15,'Mar y Tierra','Carne de res, camarones salteados al ajillo, aguacate y salsa rosada de la casa.',13.00,'/images/burger_marytierra.webp','burger'),
+(16,'Huevo frito','Adición de huevo frito',1.00,'/images/huevo.webp','adicion'),
+(17,'Jalapeños','Adición de jalapeños',0.50,'/images/jalapeno.webp','adicion'),
+(18,'Guacamole','Adición de guacamole',1.50,'/images/guacamole.webp','adicion'),
+(19,'Piña caramelizada','Adición de piña caramelizada',0.75,'/images/pina.webp','adicion'),
+(20,'Extra queso','Adición de queso cheddar o mozzarella',0.80,'/images/queso.webp','adicion'),
+(21,'Kétchup','Salsa de tomate clásica',0.00,'/images/tomate.webp','salsa'),
+(22,'Mayonesa','Mayonesa tradicional',0.00,'/images/mayonesa.webp','salsa'),
+(23,'Mostaza Dijón','Mostaza estilo Dijón',0.00,'/images/mostaza.webp','salsa'),
+(24,'Salsa BBQ ahumada','Salsa barbacoa con toque ahumado',0.60,'/images/bbq.webp','salsa'),
+(25,'Mayonesa picante','Mayonesa con un toque picante',0.60,'/images/mayonesapicante.webp','salsa'),
+(26,'Papas Fritas Corte Casero','Papas fritas de corte grueso estilo casero',2.75,'/images/papafritas.webp','papas'),
+(27,'Papas en Cascos con Piel','Papas en cascos con piel, crujientes por fuera y suaves por dentro',3.25,'/images/paparodajas.webp','papas'),
+(28,'Batatas Fritas','Batatas dulces fritas con un toque de sal',3.50,'/images/papascasco.webp','papas'),
+(29,'Limonada Natural','Limonada fresca hecha con jugo natural de limón',2.25,'/images/limonada.webp','bebida'),
+(30,'Gaseosa','Bebidas carbonatadas: Cola, Naranja o Lima-Limón',2.00,'/images/gaseosa.webp','bebida'),
+(31,'Té Helado','Té frío sabor durazno o limón',2.00,'/images/te.webp','bebida'),
+(32,'Agua Embotellada','Agua purificada en botella',1.50,'/images/agua.webp','bebida'),
+(33,'Cerveza Artesanal (sin alcohol)','Cerveza artesanal sin contenido alcohólico',4.00,'/images/cerveza.webp','bebida');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
