@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // Middleware para servir imágenes estáticas
-app.use("/images", express.static("images")); // <- aquí va
+app.use("/images", express.static("images-webp")); // <- aquí va
 
 // Tus rutas de la API
 app.use("/api", routes);
