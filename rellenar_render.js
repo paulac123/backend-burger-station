@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Client } = require('pg');
 const fs = require('fs');
 
@@ -73,13 +74,22 @@ async function migrate() {
              dump = fs.readFileSync('backup_burger_utf8.sql', 'utf8');
         }
 
+
         const lines = dump.split('\n');
+        let currentStatement = '';
         for (let line of lines) {
             line = line.trim();
             if (line.startsWith('INSERT INTO')) {
-                line = line.replace(/`/g, '"');
-                line = line.replace(/'0000-00-00 00:00:00'/g, 'NULL');
-                insertStatements.push(line);
+                currentStatement = line;
+            } else if (currentStatement) {
+                currentStatement += ' ' + line;
+            }
+
+            if (currentStatement && currentStatement.endsWith(';')) {
+                currentStatement = currentStatement.replace(/`/g, '"');
+                currentStatement = currentStatement.replace(/'0000-00-00 00:00:00'/g, 'NULL');
+                insertStatements.push(currentStatement);
+                currentStatement = '';
             }
         }
 
