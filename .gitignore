@@ -3,3 +3,6 @@ node_modules
 mysql_data
 actualizar-imagenes-bd.js
 corregir-textos-bd.js
+*.sql
+*.load
+*.zip

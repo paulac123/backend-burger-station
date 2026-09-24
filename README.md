@@ -1,19 +1,55 @@
-■ Burger Station - Backend
-Este proyecto es el backend de **Burger Station**, una aplicación para la gestión de un restaurante. El
-sistema está desarrollado con Node.js y Express, e incluye integración con base de datos, servicios,
-middleware, manejo de CORS y pruebas de testing.
+# Burger Station - Backend
 
-■ Tecnologías utilizadas:
-- Node.js - Express.js - PostgreSQL - Middleware personalizado - CORS - Servicios - Testing
-  
-■ Funcionalidades principales:
-- Gestión de productos (CRUD) - Gestión de usuarios (solo desde frontend, rutas disponibles para
-autenticación y registro) - Integración con base de datos real - Organización del código en servicios y
-middleware - Pruebas de funcionamiento
+Backend de **Burger Station**, app de gestión de restaurante. Node.js + Express, con PostgreSQL (Supabase), autenticación JWT y tests con Jest.
 
-■ Instalación y uso:
-1. Clona el repositorio 2. Instala dependencias con `npm install` 3. Configura las variables de entorno
-para la base de datos 4. Inicia el servidor con `npm run dev`
+## Demo en vivo
 
-■ Repositorio en GitHub:
+- Frontend: https://fronted-burger-station.vercel.app/
+- API: https://backend-burger-station.onrender.com
+
+## Tecnologías
+
+Node.js · Express · PostgreSQL (Supabase) · JWT · Joi · Jest
+
+## Funcionalidades principales
+
+- Gestión de productos (CRUD)
+- Registro y autenticación de usuarios (JWT)
+- Creación de órdenes (rutas protegidas)
+
+## Endpoints de la API
+
+| Método | Ruta | Descripción | Auth |
+|---|---|---|---|
+| GET | `/` | Mensaje de bienvenida | No |
+| GET | `/api/menu` | Lista el menú completo | No |
+| GET | `/api/menu/:id` | Productos por categoría | No |
+| POST | `/api/login` | Inicio de sesión | No |
+| POST | `/api/user` | Registro de usuario | No |
+| POST | `/api/orders` | Crear una orden | Sí (Bearer token) |
+
+## Variables de entorno
+
+```
+DATABASE_URL=   # conexión a PostgreSQL (Supabase)
+PORT=           # opcional, default 3000
+JWT_SECRET=     # clave para firmar tokens
+```
+
+## Automatización / DevOps
+
+- **Keep-alive con GitHub Actions** (`.github/workflows/keep-alive.yml`): ping cada 3 días a `/api/menu` para que Supabase no pause el proyecto por inactividad (límite de 7 días en el plan gratuito) y Render no duerma el backend.
+
+## Instalación
+
+1. `npm install`
+2. Configura `.env` (ver variables arriba)
+3. `npm run dev`
+
+## Autor
+
+**Paula Cruz** — Desarrolladora Fullstack — https://paulacruzlo.com
+
+## Repositorio
+
 https://github.com/paulac123/backend-burger-station
